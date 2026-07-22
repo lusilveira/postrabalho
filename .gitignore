@@ -1,0 +1,10 @@
+# Dados brutos (baixados via src/download_data.py, não versionados por tamanho)
+data/*.csv
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

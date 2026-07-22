@@ -1,0 +1,78 @@
+{
+  "n_orders": 99441,
+  "n_customers_unique_id": 96096,
+  "n_sellers": 3095,
+  "n_products": 32951,
+  "date_min": "2016-09-04 21:15:19",
+  "date_max": "2018-10-17 17:30:18",
+  "order_status_counts": {
+    "delivered": 96478,
+    "shipped": 1107,
+    "canceled": 625,
+    "unavailable": 609,
+    "invoiced": 314,
+    "processing": 301,
+    "created": 5,
+    "approved": 2
+  },
+  "pct_delivered": 97.02,
+  "avg_delivery_days": 12.1,
+  "median_delivery_days": 10.0,
+  "pct_late_orders": 6.77,
+  "avg_delay_days_when_late": 10.6,
+  "avg_review_score": 4.07,
+  "review_score_dist": {
+    "1": 11858,
+    "2": 3235,
+    "3": 8287,
+    "4": 19200,
+    "5": 57420
+  },
+  "pct_reviews_with_comment": 41.75,
+  "pct_reviews_1_2_stars": 15.09,
+  "pct_reviews_4_5_stars": 76.62,
+  "avg_score_on_time": 4.28,
+  "avg_score_late": 2.26,
+  "pct_customers_single_purchase": 96.88,
+  "pct_customers_repeat_purchase": 3.12,
+  "avg_orders_per_customer": 1.035,
+  "avg_payment_value": 154.1,
+  "payment_type_dist": {
+    "credit_card": 76795,
+    "boleto": 19784,
+    "voucher": 5775,
+    "debit_card": 1529,
+    "not_defined": 3
+  },
+  "avg_installments": 2.85,
+  "n_categories": 73,
+  "top5_categories_en": {
+    "bed_bath_table": 11115,
+    "health_beauty": 9670,
+    "sports_leisure": 8641,
+    "furniture_decor": 8334,
+    "computers_accessories": 7827
+  },
+  "n_states": 27,
+  "top5_states": {
+    "SP": 41746,
+    "RJ": 12852,
+    "MG": 11635,
+    "RS": 5466,
+    "PR": 5045
+  },
+  "late_pct_by_top_state": {
+    "SP": 4.49,
+    "RJ": 12.11,
+    "MG": 4.57,
+    "RS": 6.08,
+    "PR": 4.04
+  },
+  "avg_delivery_days_by_top_state": {
+    "SP": 8.3,
+    "RJ": 14.8,
+    "MG": 11.5,
+    "RS": 14.8,
+    "PR": 11.5
+  }
+}
