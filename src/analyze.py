@@ -2,7 +2,7 @@
 analyze.py
 ----------
 Análise exploratória do Brazilian E-Commerce Public Dataset by Olist,
-realizada para a Fase 1 do Tech Challenge (Postech — IA para Devs).
+realizada para a Fase 1 do Tech Challenge — IA para Devs.
 
 Objetivo: extrair achados reais sobre prazos de entrega, satisfação do
 cliente (reviews), taxa de recompra e distribuição geográfica, que embasam
