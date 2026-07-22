@@ -1,7 +1,7 @@
 # Análise de Dados — Olist Intelligent Marketplace
 
 Análise exploratória em Python do **Brazilian E-Commerce Public Dataset by Olist**,
-desenvolvida para a **Fase 1** do Tech Challenge (Postech — IA para Devs).
+desenvolvida para a **Fase 1** do Tech Challenge — IA para Devs.
 
 Este repositório documenta, de forma reproduzível, como os achados apresentados no
 [relatório executivo](#) foram obtidos — sem estimativas, apenas processamento real
@@ -91,5 +91,4 @@ executivo da Fase 1.
 ## Projeto
 
 Tech Challenge — Fase 1 — Fundamentos de IA e Agentic AI
-Postech — IA para Devs
 Case: Olist Intelligent Marketplace
