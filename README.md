@@ -13,15 +13,29 @@ sobre os 99.441 pedidos do dataset público da Olist (2016–2018).
 olist-ia-agentic-analysis/
 ├── data/                    # CSVs do dataset (baixados via download_data.py, não versionados)
 ├── notebooks/
-│   └── analise_olist.ipynb  # notebook com o passo a passo e os resultados
+│   └── analise_olist.ipynb  # notebook com o passo a passo, os resultados e os gráficos
 ├── results/
-│   └── analysis_results.json  # saída consolidada da análise, em JSON
+│   ├── analysis_results.json  # saída consolidada da análise, em JSON
+│   └── figures/              # os 7 gráficos da análise, em PNG
 ├── src/
 │   ├── download_data.py     # baixa o dataset
-│   └── analyze.py           # roda a análise completa e gera o JSON de resultados
+│   ├── analyze.py           # roda a análise completa e gera o JSON de resultados
+│   └── generate_charts.py   # gera e salva os 7 gráficos em results/figures/
 ├── requirements.txt
 └── README.md
 ```
+
+## Gráficos
+
+O notebook e `generate_charts.py` produzem 7 gráficos, salvos em `results/figures/`:
+
+1. Distribuição do prazo de entrega
+2. Distribuição das notas de avaliação (1-5 estrelas)
+3. Nota média: pedido no prazo vs. atrasado
+4. Taxa de recompra (compra única vs. recompra)
+5. Distribuição das formas de pagamento
+6. Top 8 categorias de produto por volume de itens vendidos
+7. Taxa de atraso por estado (top 6 em volume de pedidos)
 
 ## Como reproduzir
 
@@ -35,7 +49,10 @@ python src/download_data.py
 # 3. Rodar a análise completa (gera ./results/analysis_results.json)
 python src/analyze.py
 
-# 4. (Opcional) Abrir o notebook para ver o passo a passo com explicações
+# 4. Gerar os gráficos (salva PNGs em ./results/figures)
+python src/generate_charts.py
+
+# 5. (Opcional) Abrir o notebook para ver o passo a passo com explicações e gráficos
 jupyter notebook notebooks/analise_olist.ipynb
 ```
 
