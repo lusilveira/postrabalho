@@ -125,6 +125,14 @@ Se as imagens já foram commitadas e você deseja removê-las do histórico, use
 para removê-las do índice e então commit/push; para reescrever o histórico com remoção
 definitiva, considere `git filter-repo` ou `git filter-branch` com cautela.
 
+## Alterações recentes
+
+- As chaves do JSON gerado por `src/analyze.py` foram traduzidas para português.
+	- Exemplos: `n_pedidos`, `pct_pedidos_atrasados`, `nota_media_avaliacao`, `pct_avaliacoes_com_comentario`, `pct_clientes_recompra`.
+	- O arquivo atualizado é `results/analysis_results.json` — ver esse arquivo para o conjunto completo de chaves em português.
+
+Se você tiver scripts externos que consumiam as chaves antigas em inglês, atualize-os para os novos nomes em português.
+
 ## Projeto
 
 Tech Challenge — Fase 1 — Fundamentos de IA e Agentic AI
