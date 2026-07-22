@@ -7,6 +7,11 @@ Este repositório documenta, de forma reproduzível, como os achados apresentado
 [relatório executivo](#) foram obtidos — sem estimativas, apenas processamento real
 sobre os 99.441 pedidos do dataset público da Olist (2016–2018).
 
+> **Nota sobre o uso de IA:** este é um trabalho individual, desenvolvido com apoio da
+> Inteligência Artificial Claude (Anthropic) — na estruturação dos scripts, do notebook
+> e deste README. As decisões analíticas e a validação dos resultados são de minha
+> responsabilidade.
+
 ## Estrutura do repositório
 
 ```
