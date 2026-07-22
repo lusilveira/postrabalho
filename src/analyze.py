@@ -43,14 +43,14 @@ def load_data():
 
 def analyze_volumetrics(orders, customers, sellers, products, result):
     """Volume geral da base: pedidos, clientes únicos, vendedores, produtos, período."""
-    result["n_orders"] = int(orders["order_id"].nunique())
-    result["n_customers_unique_id"] = int(customers["customer_unique_id"].nunique())
-    result["n_sellers"] = int(sellers["seller_id"].nunique())
-    result["n_products"] = int(products["product_id"].nunique())
-    result["date_min"] = str(orders["order_purchase_timestamp"].min())
-    result["date_max"] = str(orders["order_purchase_timestamp"].max())
-    result["order_status_counts"] = orders["order_status"].value_counts().to_dict()
-    result["pct_delivered"] = round(100 * (orders["order_status"] == "delivered").mean(), 2)
+    result["n_pedidos"] = int(orders["order_id"].nunique())
+    result["n_clientes_unicos"] = int(customers["customer_unique_id"].nunique())
+    result["n_vendedores"] = int(sellers["seller_id"].nunique())
+    result["n_produtos"] = int(products["product_id"].nunique())
+    result["data_inicio"] = str(orders["order_purchase_timestamp"].min())
+    result["data_fim"] = str(orders["order_purchase_timestamp"].max())
+    result["contagem_status_pedidos"] = orders["order_status"].value_counts().to_dict()
+    result["pct_pedidos_entregues"] = round(100 * (orders["order_status"] == "delivered").mean(), 2)
 
 
 def analyze_delivery(orders, result):
@@ -60,62 +60,62 @@ def analyze_delivery(orders, result):
     d["delay_days"] = (d["order_delivered_customer_date"] - d["order_estimated_delivery_date"]).dt.days
     d["is_late"] = d["delay_days"] > 0
 
-    result["avg_delivery_days"] = round(d["delivery_days"].mean(), 1)
-    result["median_delivery_days"] = round(d["delivery_days"].median(), 1)
-    result["pct_late_orders"] = round(100 * d["is_late"].mean(), 2)
-    result["avg_delay_days_when_late"] = round(d.loc[d["is_late"], "delay_days"].mean(), 1)
+    result["media_prazo_entrega"] = round(d["delivery_days"].mean(), 1)
+    result["mediana_prazo_entrega"] = round(d["delivery_days"].median(), 1)
+    result["pct_pedidos_atrasados"] = round(100 * d["is_late"].mean(), 2)
+    result["media_atraso_quando_atrasado"] = round(d.loc[d["is_late"], "delay_days"].mean(), 1)
     return d
 
 
 def analyze_reviews(reviews, d, result):
     """Nota de avaliação, distribuição de estrelas, e efeito do atraso na nota."""
-    result["avg_review_score"] = round(reviews["review_score"].mean(), 2)
-    result["review_score_dist"] = reviews["review_score"].value_counts().sort_index().to_dict()
-    result["pct_reviews_with_comment"] = round(100 * reviews["review_comment_message"].notna().mean(), 2)
-    result["pct_reviews_1_2_stars"] = round(100 * reviews["review_score"].isin([1, 2]).mean(), 2)
-    result["pct_reviews_4_5_stars"] = round(100 * reviews["review_score"].isin([4, 5]).mean(), 2)
+    result["nota_media_avaliacao"] = round(reviews["review_score"].mean(), 2)
+    result["dist_nota_avaliacao"] = reviews["review_score"].value_counts().sort_index().to_dict()
+    result["pct_avaliacoes_com_comentario"] = round(100 * reviews["review_comment_message"].notna().mean(), 2)
+    result["pct_avaliacoes_1_2_estrelas"] = round(100 * reviews["review_score"].isin([1, 2]).mean(), 2)
+    result["pct_avaliacoes_4_5_estrelas"] = round(100 * reviews["review_score"].isin([4, 5]).mean(), 2)
 
     rev_orders = d.merge(reviews[["order_id", "review_score"]], on="order_id", how="inner")
     score_by_lateness = rev_orders.groupby("is_late")["review_score"].mean().round(2).to_dict()
-    result["avg_score_on_time"] = score_by_lateness.get(False)
-    result["avg_score_late"] = score_by_lateness.get(True)
+    result["nota_media_no_prazo"] = score_by_lateness.get(False)
+    result["nota_media_atrasado"] = score_by_lateness.get(True)
 
 
 def analyze_repeat_purchase(orders, customers, result):
     """Taxa de recompra: usa customer_unique_id, que identifica a pessoa (não o pedido)."""
     orders_cust = orders.merge(customers[["customer_id", "customer_unique_id"]], on="customer_id", how="left")
     purchase_counts = orders_cust.groupby("customer_unique_id")["order_id"].nunique()
-    result["pct_customers_single_purchase"] = round(100 * (purchase_counts == 1).mean(), 2)
-    result["pct_customers_repeat_purchase"] = round(100 * (purchase_counts > 1).mean(), 2)
-    result["avg_orders_per_customer"] = round(purchase_counts.mean(), 3)
+    result["pct_clientes_uma_compra"] = round(100 * (purchase_counts == 1).mean(), 2)
+    result["pct_clientes_recompra"] = round(100 * (purchase_counts > 1).mean(), 2)
+    result["media_pedidos_por_cliente"] = round(purchase_counts.mean(), 3)
 
 
 def analyze_payments(payments, result):
-    result["avg_payment_value"] = round(payments["payment_value"].mean(), 2)
-    result["payment_type_dist"] = payments["payment_type"].value_counts().to_dict()
-    result["avg_installments"] = round(payments["payment_installments"].mean(), 2)
+    result["ticket_medio"] = round(payments["payment_value"].mean(), 2)
+    result["dist_formas_pagamento"] = payments["payment_type"].value_counts().to_dict()
+    result["parcelamento_medio"] = round(payments["payment_installments"].mean(), 2)
 
 
 def analyze_products(items, products, cat_translation, result):
-    result["n_categories"] = int(products["product_category_name"].nunique())
+    result["n_categorias"] = int(products["product_category_name"].nunique())
     top_cats = items.merge(products[["product_id", "product_category_name"]], on="product_id", how="left")
     top_cats_count = top_cats["product_category_name"].value_counts().head(5)
     cat_map = dict(zip(cat_translation["product_category_name"], cat_translation["product_category_name_english"]))
-    result["top5_categories_en"] = {cat_map.get(k, k): v for k, v in top_cats_count.to_dict().items()}
+    result["top5_categorias"] = {cat_map.get(k, k): v for k, v in top_cats_count.to_dict().items()}
 
 
 def analyze_geography(customers, d, result):
     """Distribuição por estado e cruzamento de atraso/prazo por região."""
-    result["n_states"] = int(customers["customer_state"].nunique())
+    result["n_estados"] = int(customers["customer_state"].nunique())
     top_states = customers["customer_state"].value_counts().head(5).to_dict()
-    result["top5_states"] = top_states
+    result["top5_estados"] = top_states
 
     d_state = d.merge(customers[["customer_id", "customer_state"]], on="customer_id", how="left")
     late_by_state = d_state.groupby("customer_state")["is_late"].mean().mul(100).round(2)
     delivery_by_state = d_state.groupby("customer_state")["delivery_days"].mean().round(1)
     top_state_codes = list(top_states.keys())
-    result["late_pct_by_top_state"] = {s: late_by_state.get(s) for s in top_state_codes}
-    result["avg_delivery_days_by_top_state"] = {s: delivery_by_state.get(s) for s in top_state_codes}
+    result["pct_atraso_por_estado_top"] = {s: late_by_state.get(s) for s in top_state_codes}
+    result["prazo_medio_por_estado_top"] = {s: delivery_by_state.get(s) for s in top_state_codes}
 
 
 def main():

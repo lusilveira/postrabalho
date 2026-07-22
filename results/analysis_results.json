@@ -1,11 +1,11 @@
 {
-  "n_orders": 99441,
-  "n_customers_unique_id": 96096,
-  "n_sellers": 3095,
-  "n_products": 32951,
-  "date_min": "2016-09-04 21:15:19",
-  "date_max": "2018-10-17 17:30:18",
-  "order_status_counts": {
+  "n_pedidos": 99441,
+  "n_clientes_unicos": 96096,
+  "n_vendedores": 3095,
+  "n_produtos": 32951,
+  "data_inicio": "2016-09-04 21:15:19",
+  "data_fim": "2018-10-17 17:30:18",
+  "contagem_status_pedidos": {
     "delivered": 96478,
     "shipped": 1107,
     "canceled": 625,
@@ -15,60 +15,60 @@
     "created": 5,
     "approved": 2
   },
-  "pct_delivered": 97.02,
-  "avg_delivery_days": 12.1,
-  "median_delivery_days": 10.0,
-  "pct_late_orders": 6.77,
-  "avg_delay_days_when_late": 10.6,
-  "avg_review_score": 4.07,
-  "review_score_dist": {
-    "1": 11858,
-    "2": 3235,
-    "3": 8287,
-    "4": 19200,
-    "5": 57420
+  "pct_pedidos_entregues": 97.02,
+  "media_prazo_entrega": 12.1,
+  "mediana_prazo_entrega": 10.0,
+  "pct_pedidos_atrasados": 6.77,
+  "media_atraso_quando_atrasado": 10.6,
+  "nota_media_avaliacao": 4.09,
+  "dist_nota_avaliacao": {
+    "1": 11424,
+    "2": 3151,
+    "3": 8179,
+    "4": 19142,
+    "5": 57328
   },
-  "pct_reviews_with_comment": 41.75,
-  "pct_reviews_1_2_stars": 15.09,
-  "pct_reviews_4_5_stars": 76.62,
-  "avg_score_on_time": 4.28,
-  "avg_score_late": 2.26,
-  "pct_customers_single_purchase": 96.88,
-  "pct_customers_repeat_purchase": 3.12,
-  "avg_orders_per_customer": 1.035,
-  "avg_payment_value": 154.1,
-  "payment_type_dist": {
+  "pct_avaliacoes_com_comentario": 41.3,
+  "pct_avaliacoes_1_2_estrelas": 14.69,
+  "pct_avaliacoes_4_5_estrelas": 77.07,
+  "nota_media_no_prazo": 4.29,
+  "nota_media_atrasado": 2.27,
+  "pct_clientes_uma_compra": 96.88,
+  "pct_clientes_recompra": 3.12,
+  "media_pedidos_por_cliente": 1.035,
+  "ticket_medio": 154.1,
+  "dist_formas_pagamento": {
     "credit_card": 76795,
     "boleto": 19784,
     "voucher": 5775,
     "debit_card": 1529,
     "not_defined": 3
   },
-  "avg_installments": 2.85,
-  "n_categories": 73,
-  "top5_categories_en": {
+  "parcelamento_medio": 2.85,
+  "n_categorias": 73,
+  "top5_categorias": {
     "bed_bath_table": 11115,
     "health_beauty": 9670,
     "sports_leisure": 8641,
     "furniture_decor": 8334,
     "computers_accessories": 7827
   },
-  "n_states": 27,
-  "top5_states": {
+  "n_estados": 27,
+  "top5_estados": {
     "SP": 41746,
     "RJ": 12852,
     "MG": 11635,
     "RS": 5466,
     "PR": 5045
   },
-  "late_pct_by_top_state": {
+  "pct_atraso_por_estado_top": {
     "SP": 4.49,
     "RJ": 12.11,
     "MG": 4.57,
     "RS": 6.08,
     "PR": 4.04
   },
-  "avg_delivery_days_by_top_state": {
+  "prazo_medio_por_estado_top": {
     "SP": 8.3,
     "RJ": 14.8,
     "MG": 11.5,
