@@ -61,6 +61,25 @@ python src/generate_charts.py
 jupyter notebook notebooks/analise_olist.ipynb
 ```
 
+### Gerar figuras (recomendado - ambiente isolado)
+
+É recomendado usar um virtualenv antes de instalar dependências e gerar figuras:
+
+```bash
+# criar e ativar um virtualenv (macOS / Linux)
+python -m venv .venv
+source .venv/bin/activate
+
+# instalar dependências
+pip install -r requirements.txt
+
+# gerar os PNGs em results/figures/
+python src/generate_charts.py
+```
+
+Os arquivos gerados ficam em `results/figures/`. Se quiser versioná-los, adicione e
+commite com `git add results/figures/*.png && git commit -m "Adiciona figuras"`.
+
 ## Fonte dos dados
 
 Dataset público: [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
