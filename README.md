@@ -112,6 +112,19 @@ executivo da Fase 1.
 - [pandas](https://pandas.pydata.org/) para carregamento, tratamento e cruzamento dos dados
 - Jupyter Notebook para documentar a análise de forma reproduzível
 
+## Nota sobre versionamento de imagens
+
+Arquivos binários grandes (como PNGs gerados automaticamente) podem inflar o histórico
+do repositório. Recomenda-se não versionar imagens pesadas. Em vez disso, considere:
+
+- adicionar `results/figures/` ao `.gitignore` para evitar commits acidentais;
+- usar Git LFS para rastrear binários grandes quando necessário;
+- gerar as figuras em CI e publicar como artefatos ou release assets.
+
+Se as imagens já foram commitadas e você deseja removê-las do histórico, use `git rm --cached`
+para removê-las do índice e então commit/push; para reescrever o histórico com remoção
+definitiva, considere `git filter-repo` ou `git filter-branch` com cautela.
+
 ## Projeto
 
 Tech Challenge — Fase 1 — Fundamentos de IA e Agentic AI

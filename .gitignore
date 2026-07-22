@@ -8,3 +8,6 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Evitar versionar figuras geradas automaticamente
+results/figures/
