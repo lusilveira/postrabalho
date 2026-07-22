@@ -121,10 +121,9 @@ def chart_repeat_purchase(orders, customers):
 
 
 def chart_top_categories(items, products, cat_translation):
-    cat_map = dict(zip(cat_translation["product_category_name"], cat_translation["product_category_name_english"]))
     top_cats = items.merge(products[["product_id", "product_category_name"]], on="product_id", how="left")
     top5 = top_cats["product_category_name"].value_counts().head(8)
-    top5.index = [cat_map.get(c, c) for c in top5.index]
+    top5.index = [c.replace("_", " ").title() if isinstance(c, str) else c for c in top5.index]
     fig, ax = plt.subplots(figsize=(7.5, 4.5))
     ax.barh(top5.index[::-1], top5.values[::-1], color=NAVY)
     ax.set_title("Top 8 categorias de produto por volume de itens vendidos", fontsize=13, fontweight="bold", color=NAVY)

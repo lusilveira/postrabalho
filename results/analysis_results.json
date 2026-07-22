@@ -47,11 +47,11 @@
   "parcelamento_medio": 2.85,
   "n_categorias": 73,
   "top5_categorias": {
-    "bed_bath_table": 11115,
-    "health_beauty": 9670,
-    "sports_leisure": 8641,
-    "furniture_decor": 8334,
-    "computers_accessories": 7827
+    "Cama Mesa Banho": 11115,
+    "Beleza Saude": 9670,
+    "Esporte Lazer": 8641,
+    "Moveis Decoracao": 8334,
+    "Informatica Acessorios": 7827
   },
   "n_estados": 27,
   "top5_estados": {

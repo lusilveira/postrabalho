@@ -100,8 +100,10 @@ def analyze_products(items, products, cat_translation, result):
     result["n_categorias"] = int(products["product_category_name"].nunique())
     top_cats = items.merge(products[["product_id", "product_category_name"]], on="product_id", how="left")
     top_cats_count = top_cats["product_category_name"].value_counts().head(5)
-    cat_map = dict(zip(cat_translation["product_category_name"], cat_translation["product_category_name_english"]))
-    result["top5_categorias"] = {cat_map.get(k, k): v for k, v in top_cats_count.to_dict().items()}
+    result["top5_categorias"] = {
+        (k.replace("_", " ").title() if isinstance(k, str) else k): v
+        for k, v in top_cats_count.to_dict().items()
+    }
 
 
 def analyze_geography(customers, d, result):
